@@ -1,0 +1,8 @@
+FROM node:alpine
+
+WORKDIR /app
+COPY ./src .
+
+EXPOSE 3000
+
+ENTRYPOINT [ "node", "index.js" ]
