@@ -15,18 +15,16 @@ app.get('/', (req, res) => {
     const mysql = require('mysql')
     const connection = mysql.createConnection(config)
 
-    connection.query('create table if not exists pessoa(id int not null auto_increment, nome varchar(255) not null, primary key(id))', function (error, results, fields) {
-        
-        if (error) console.log(error);
+    connection.query('select nome from pessoa', function (error, results, fields) {
+
+        if (error) {
+            connection.query('create table pessoa(id int not null auto_increment, nome varchar(255) not null, primary key(id))')
+        }
 
         connection.query(`insert into pessoa(nome) values('Willian Menezes')`, function (error, results, fields) {
-
-            if (error) console.log(error);
     
             connection.query('select nome from pessoa', function (error, results, fields) {
-
-                if (error) console.log(error);
-        
+    
                 results.forEach(el => {
                     response += '</br>' + el.nome;
                 });
