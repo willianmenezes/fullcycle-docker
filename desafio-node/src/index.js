@@ -8,6 +8,12 @@ const config =  {
     database: 'nodeapp'
 }
 
+const mysql = require('mysql')
+const connection = mysql.createConnection(config)
+const sql = `create table pessoa(id int not null auto_increment, nome varchar(255) not null, primary key(id))`
+connection.query(sql)
+connection.end()
+
 app.get('/', (req, res) => {
 
     let response = '<h1>Full Cycle Rocks!</h1>';
