@@ -8,8 +8,6 @@ const config =  {
     database: 'nodeapp'
 }
 
-
-
 app.get('/', (req, res) => {
 
     let response = '<h1>Full Cycle Rocks!</h1>';
