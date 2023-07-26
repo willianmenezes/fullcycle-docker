@@ -11,7 +11,6 @@ services:
       - ./mysql:/var/lib/mysql
       - ./init.sql:/data/application/init.sql
     environment:
-      - MYSQL_DATABASE=nodeapp
       - MYSQL_ROOT_PASSWORD=root
     networks:
       - nodenet
