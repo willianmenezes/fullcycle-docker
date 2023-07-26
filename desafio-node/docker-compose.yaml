@@ -3,12 +3,13 @@ version: '3'
 services:
   db:
     image: mysql:5.7
-    command: --innodb-use-native-aio=0
+    command: --innodb-use-native-aio=0 && --init-file /data/application/init.sql
     container_name: db
     restart: always
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
+      - ./init.sql:/data/application/init.sql
     environment:
       - MYSQL_DATABASE=nodeapp
       - MYSQL_ROOT_PASSWORD=root
