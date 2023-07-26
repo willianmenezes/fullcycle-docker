@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     const mysql = require('mysql')
     const connection = mysql.createConnection(config)
 
-    const sqlCreate = 'create table [IF NOT EXISTS] pessoa (id int not null auto_increment, nome varchar(255) not null, primary key(id))'
+    const sqlCreate = 'create table IF NOT EXISTS pessoa (id int not null auto_increment, nome varchar(255) not null, primary key(id))'
     connection.query(sqlCreate)
 
     const sql = `INSERT INTO pessoa(nome) VALUES('Willian Menezes')`
