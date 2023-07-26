@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  nginxserver:
+    build: 
+      context: .
+      dockerfile: Dockerfile.nginx
+    ports:
+      - 8080:80
+    networks:
+      - nodenet
+    container_name: nginxapp
+  nodeserver:
+    build: 
+      context: .
+      dockerfile: Dockerfile.node
+    networks:
+      - nodenet
+    container_name: nodeapp
+
+networks:
+  nodenet:
+    driver: bridge
