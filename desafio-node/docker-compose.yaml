@@ -2,14 +2,14 @@ version: '3'
 
 services:
   db:
-    image: mysql:5.7
-    command: --innodb-use-native-aio=0 && --init-file /data/application/init.sql
+    image: mysql
+    command: --innodb-use-native-aio=0 && --init-file /data/application/exec.sql
     container_name: db
     restart: always
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./init.sql:/data/application/init.sql
+      - ./exec.sql:/data/application/exec.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
     networks:
