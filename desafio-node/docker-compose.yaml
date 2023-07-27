@@ -3,13 +3,13 @@ version: '3'
 services:
   db:
     image: mysql
-    command: --innodb-use-native-aio=0 && --init-file /data/application/exec.sql && --default-authentication-plugin=mysql_native_password
+    command: --innodb-use-native-aio=0 && --default-authentication-plugin=mysql_native_password
     container_name: db
     restart: always
     tty: true
     volumes:
+      - ./exec.sql:/docker-entrypoint-initdb.d/exec.sql
       - ./mysql:/var/lib/mysql
-      - ./exec.sql:/data/application/exec.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
     networks:
