@@ -9,7 +9,7 @@ services:
     tty: true
     volumes:
       - ./mysql:/var/lib/mysql
-      - ./exec.sql:/docker-entrypoint-initdb.d/exec.sql"
+      - ./exec.sql:/docker-entrypoint-initdb.d/exec.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
     networks:
