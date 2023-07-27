@@ -12,6 +12,7 @@ services:
       - ./exec.sql:/docker-entrypoint-initdb.d/exec.sql
     environment:
       - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=nodeapp
     networks:
       - nodenet
   nginxserver:
