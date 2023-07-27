@@ -13,7 +13,15 @@ app.get('/', (req, res) => {
     const mysql = require('mysql')
     const connection = mysql.createConnection(config)
     connection.query(`insert into pessoa(nome) values('Willian Menezes')`)
-    connection.query('select nome from pessoa')
+    connection.query('select nome from pessoa', function (error, results, fields) {
+
+        results.forEach(el => {
+            response += '</br>' + el.nome;
+        });
+
+        connection.end()
+        res.send(response)
+    })
 });
 
 app.listen(port, () => {
